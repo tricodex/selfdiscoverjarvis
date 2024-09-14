@@ -1,5 +1,7 @@
 # RDJ - ReflectDiscoverJarvis
 
+Save as tricodex scaffold, heavily based on the t3 scaffold and theo, this is how I will start most nextjs project from now on.
+
 - Discover
 
 ## Create T3 App

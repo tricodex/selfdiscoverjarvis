@@ -11,12 +11,15 @@ export const metadata: Metadata = {
   icons: [{ rel: "icon", url: "/favicon.ico" }],
 };
 
+import TopNav from "~/components/main/TopNav";
+
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" className={`${GeistSans.variable}`}>
       <body>
+        <TopNav />
         <TRPCReactProvider>{children}</TRPCReactProvider>
       </body>
     </html>
