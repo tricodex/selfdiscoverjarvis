@@ -1,10 +1,10 @@
-import { db } from "~/server/db";
-
+import { getMyImages } from "~/server/queries";
+import Image from 'next/image';
 // export const runtime = "force-dynamic";
 
 export default async function Hero() {
-    const posts = await db.query.posts.findMany(); 
-    console.log(posts);
+    const images = await getMyImages(); 
+    console.log(images);
 
   return (
     <div className="hero">
@@ -24,8 +24,10 @@ https://github.com/tricodex/selfdiscoverjarvis/tree/s2"
           </a>
         </div>
         <div className="hero__image flex flex-wrap gap-1">
-            {posts.map((post) => (
-                <div key={post.id}>{post.name}
+            {images.map((image) => (
+                <div key={image.id}>{image.name}
+                <Image src={image.url} alt={image.name} width={48} height={24} />
+
                 </div>))}
         </div>
       </div>
