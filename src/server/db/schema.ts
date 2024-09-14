@@ -17,7 +17,7 @@ import { type AdapterAccount } from "next-auth/adapters";
  *
  * @see https://orm.drizzle.team/docs/goodies#multi-project-schema
  */
-export const createTable = pgTableCreator((name) => `selfdiscoverjarvis_${name}`);
+export const createTable = pgTableCreator((name) => `reflectdiscoverjarvis_${name}`);
 
 export const posts = createTable(
   "post",

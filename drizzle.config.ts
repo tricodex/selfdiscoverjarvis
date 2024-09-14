@@ -8,5 +8,5 @@ export default {
   dbCredentials: {
     url: env.DATABASE_URL,
   },
-  tablesFilter: ["selfdiscoverjarvis_*"],
+  tablesFilter: ["reflectdiscoverjarvis_*"],
 } satisfies Config;
