@@ -5,15 +5,21 @@ import { images } from '~/server/db/schema';
 import { eq } from 'drizzle-orm';
 
 export async function getMyImages() {
-  const session = await getServerAuthSession();
+  try {
+    const session = await getServerAuthSession();
 
-  if (!session || !session.user) {
-    throw new Error("Unauthorized");
+    if (!session || !session.user) {
+      console.error("User not authenticated");
+      return [];
+    }
+
+    const userImages = await db.query.images.findMany({
+      where: eq(images.createdById, session.user.id),
+    });
+
+    return userImages;
+  } catch (error) {
+    console.error("Error fetching user images:", error);
+    return [];
   }
-
-  const userImages = await db.query.images.findMany({
-    where: eq(images.createdById, session.user.id),
-  });
-
-  return userImages;
 }
