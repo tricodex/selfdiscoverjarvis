@@ -206,7 +206,7 @@ const AssessmentPage: React.FC = () => {
                     >
                       <div className={`flex items-start space-x-2 ${message.role === 'user' ? 'flex-row-reverse' : ''}`}>
                         <Avatar>
-                          <AvatarImage src={message.role === 'user' ? '/user-avatar.png' : '/logo.svg'} />
+                          <AvatarImage src={message.role === 'user' ? '/user.svg' : '/logo.svg'} />
                           <AvatarFallback>{message.role === 'user' ? 'U' : 'AI'}</AvatarFallback>
                         </Avatar>
                         <div className={`max-w-md p-3 rounded-lg ${message.role === 'user' ? 'bg-turquoise-100 text-gray-800' : 'bg-gray-100 text-gray-800'}`}>
@@ -269,7 +269,7 @@ const AssessmentPage: React.FC = () => {
                   <div key={index} className={`flex ${message.role === 'user' ? 'justify-end' : 'justify-start'} mb-4`}>
                     <div className={`flex items-start space-x-2 ${message.role === 'user' ? 'flex-row-reverse' : ''}`}>
                       <Avatar>
-                        <AvatarImage src={message.role === 'user' ? '/user-avatar.png' : '/logo.svg'} />
+                        <AvatarImage src={message.role === 'user' ? '/user.svg' : '/logo.svg'} />
                         <AvatarFallback>{message.role === 'user' ? 'U' : 'AI'}</AvatarFallback>
                       </Avatar>
                       <div className={`max-w-md p-3 rounded-lg ${message.role === 'user' ? 'bg-turquoise-100 text-gray-800' : 'bg-gray-100 text-gray-800'}`}>

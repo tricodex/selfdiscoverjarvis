@@ -1,34 +1,38 @@
+// src/app/_components/topnav.tsx
 import Link from 'next/link';
+import Image from 'next/image';
 import { getServerAuthSession } from "~/server/auth";
+import { Button } from '~/components/ui/button';
 
 async function TopNav() {
   const session = await getServerAuthSession();
 
   return (
-    <nav className="flex justify-between items-center px-4 py-3 bg-gradient-to-r from-[#2e026d] to-[#15162c] text-white">
-      <div>
-        <Link href="/" className="mr-4">Home</Link>
-        <Link href="/about" className="mr-4">About</Link>
-        <Link href="/contact">Contact</Link>
+    <nav className="topnav-container">
+      <div className="topnav-content">
+        <Link href="/" className="topnav-logo space-x-0">
+          <Image src="/logo.svg" alt="RDJ Logo" width={36} height={40} />
+          <span className="topnav-logo-text">RDJ</span>
+        </Link>
+        <div className="topnav-links">
+          <Link href="/" className="topnav-link">Home</Link>
+          <Link href="/assessment" className="topnav-link">Assessment</Link>
+          <Link href="/playground" className="topnav-link">Playground</Link>
+          <Link href="/vibes" className="topnav-link">Vibes</Link>
+        </div>
       </div>
-      <div>
+      <div className="topnav-auth">
         {session ? (
-          <div className="flex items-center">
-            <span className="mr-4">Logged in as {session.user?.name}</span>
-            <Link
-              href="/api/auth/signout"
-              className="rounded-full bg-white/10 px-4 py-2 font-semibold no-underline transition hover:bg-white/20"
-            >
-              Sign out
-            </Link>
+          <div className="topnav-user-info">
+            <span className="topnav-username">Logged in as {session.user?.name}</span>
+            <Button asChild variant="outline" className="topnav-button">
+              <Link href="/api/auth/signout">Sign out</Link>
+            </Button>
           </div>
         ) : (
-          <Link
-            href="/api/auth/signin"
-            className="rounded-full bg-white/10 px-4 py-2 font-semibold no-underline transition hover:bg-white/20"
-          >
-            Sign in
-          </Link>
+          <Button asChild variant="outline" className="topnav-button">
+            <Link href="/api/auth/signin">Sign in</Link>
+          </Button>
         )}
       </div>
     </nav>

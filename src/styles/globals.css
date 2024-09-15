@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Protest+Guerrilla&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -64,3 +67,267 @@
     @apply bg-background text-foreground;
   }
 }
+
+.protest-guerrilla-regular {
+  font-family: "Protest Guerrilla", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* hero stuff */
+
+
+.hero-container {
+  position: relative;
+  width: 100vw;
+  min-height: 150vh;
+  background: linear-gradient(135deg, #034f52, #025a68, #023059);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  overflow-x: hidden;
+  font-family: 'Cormorant Garamond', serif;
+}
+
+.hero-animation-container {
+  position: relative;
+  width: 80vw;
+  max-width: 1200px;
+  aspect-ratio: 16 / 8;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1), 
+              0 1px 8px rgba(0, 0, 0, 0.2),
+              0 0 0 1px rgba(255, 255, 255, 0.08) inset;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem;
+  transition: all 0.5s ease-out;
+  margin-top: 5vh;
+  background-image: url('https://utfs.io/f/skkJdUt435JOtEukMfwW5ZfSCQw4AJTIndrtqE7Bv091g8e3');
+  background-size: cover;
+}
+
+.hero-breathe-in {
+  transform: scale(1.02);
+}
+
+.hero-breathe-out {
+  transform: scale(0.98);
+}
+
+.hero-canvas-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 15px;
+}
+
+.hero-container h1 {
+  font-family: 'Cinzel', serif;
+  font-size: 3.5rem;
+  color: white;
+  letter-spacing: 0.2em;
+  margin: 0;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  z-index: 2;
+}
+
+.hero-container canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.hero-button {
+  position: relative;
+  z-index: 2;
+  background-color: rgba(255, 255, 255, 0.15);
+  border: 2px solid rgba(255, 255, 255, 0.6);
+  color: white;
+  padding: 0.75rem 1.5rem;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-radius: 15px;
+  font-family: 'Cinzel', serif;
+  letter-spacing: 0.1em;
+  -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px);
+}
+
+.hero-button:hover {
+  background-color: rgba(255, 255, 255, 0.25);
+  border-color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.hero-haiku {
+  font-size: 1.2rem;
+  color: rgba(255, 255, 255, 0.8);
+  margin-top: 2rem;
+  text-align: center;
+  line-height: 1.6;
+  font-style: italic;
+  max-width: 80%;
+}
+
+.hero-cards-container {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 5rem;
+  padding: 0 2rem;
+  width: 100%;
+  max-width: 1200px;
+}
+
+.hero-card {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  padding: 2rem;
+  width: calc(50% - 1rem);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px);
+  transition: all 0.3s ease;
+}
+
+.hero-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+.hero-card h2 {
+  font-family: 'Cinzel', serif;
+  color: white;
+  margin-bottom: 1rem;
+}
+
+.hero-card p {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+/* topnav stuff */
+
+.topnav-container {
+  background: linear-gradient(90deg, #023059, #025a68);
+  padding: 0.5rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.topnav-content {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.topnav-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.1rem;
+  text-decoration: none;
+  transition: transform 0.3s ease;
+  /* margin-right: 8rem; */
+}
+
+.topnav-logo:hover {
+  transform: scale(1.05);
+}
+
+.topnav-logo-text {
+  font-family: 'Cinzel', serif;
+  font-weight: 800;
+  font-size: 1.8rem;
+  color: white;
+  letter-spacing: 0.05em;
+  margin-bottom: 2.5px;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.9);
+}
+
+.topnav-links {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.topnav-link {
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  position: relative;
+  padding-bottom: 0.25rem;
+}
+
+.topnav-link::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: white;
+  transition: width 0.3s ease;
+}
+
+.topnav-link:hover {
+  color: white;
+}
+
+.topnav-link:hover::after {
+  width: 100%;
+}
+
+.topnav-auth {
+  display: flex;
+  align-items: center;
+}
+
+.topnav-user-info {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.topnav-username {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.9rem;
+}
+
+.topnav-button {
+  background-color: transparent;
+  color: white;
+  border: 2px solid rgba(255, 255, 255, 0.6);
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  border-radius: 25px;
+}
+
+.topnav-button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* more stuff */

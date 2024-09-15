@@ -191,3 +191,27 @@ export const userResponsesRelations = relations(userResponses, ({ one }) => ({
   user: one(users, { fields: [userResponses.userId], references: [users.id] }),
   assessment: one(assessments, { fields: [userResponses.assessmentId], references: [assessments.id] }),
 }));
+
+export const personalVibes = createTable(
+  "personal_vibe",
+  {
+    id: serial("id").primaryKey(),
+    userId: varchar("user_id", { length: 255 })
+      .notNull()
+      .references(() => users.id),
+    name: varchar("name", { length: 255 }).notNull(),
+    mood: varchar("mood", { length: 255 }).notNull(),
+    theme: integer("theme").notNull(),
+    shaderConfig: json("shader_config").notNull(),
+    createdAt: timestamp("created_at", { withTimezone: true })
+      .default(sql`CURRENT_TIMESTAMP`)
+      .notNull(),
+    updatedAt: timestamp("updated_at", { withTimezone: true }).$onUpdate(
+      () => new Date()
+    ),
+  }
+);
+
+export const personalVibesRelations = relations(personalVibes, ({ one }) => ({
+  user: one(users, { fields: [personalVibes.userId], references: [users.id] }),
+}));

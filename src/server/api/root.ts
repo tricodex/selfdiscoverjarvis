@@ -3,6 +3,8 @@ import { assessmentRouter } from "~/server/api/routers/assessment";
 import { createCallerFactory, createTRPCRouter } from "~/server/api/trpc";
 import { aiShaderRouter } from "~/server/api/routers/aiShader";
 import { chatRouter } from "~/server/api/routers/chat"; 
+import { personalVibeRouter } from "~/server/api/routers/personalVibe";
+
 
 
 
@@ -16,6 +18,8 @@ export const appRouter = createTRPCRouter({
   assessment: assessmentRouter,
   aiShader: aiShaderRouter,
   chat: chatRouter, 
+  personalVibe: personalVibeRouter,
+
 
 
 });
