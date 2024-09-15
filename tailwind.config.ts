@@ -1,5 +1,7 @@
 import { type Config } from "tailwindcss";
 import { fontFamily } from "tailwindcss/defaultTheme";
+import tailwindcssAnimate from "tailwindcss-animate";
+
 
 export default {
     darkMode: ["class"],
@@ -54,7 +56,19 @@ export default {
   				'3': 'hsl(var(--chart-3))',
   				'4': 'hsl(var(--chart-4))',
   				'5': 'hsl(var(--chart-5))'
-  			}
+  			},
+			  turquoise: {
+				50: '#e0f7f6',
+				100: '#b3ecea',
+				200: '#80e0dd',
+				300: '#4dd4cf',
+				400: '#26c9c5',
+				500: '#00bfbb',
+				600: '#00b3b0',
+				700: '#00a6a3',
+				800: '#009996',
+				900: '#008080',
+			  },
   		},
   		keyframes: {
   			'accordion-down': {
@@ -80,5 +94,6 @@ export default {
   		}
   	}
   },
-  plugins: [require("tailwindcss-animate")],
+
+plugins: [tailwindcssAnimate],
 } satisfies Config;

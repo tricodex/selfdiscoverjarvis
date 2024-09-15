@@ -8,6 +8,8 @@ import {
   text,
   timestamp,
   varchar,
+  json,
+  jsonb
 } from "drizzle-orm/pg-core";
 import { type AdapterAccount } from "next-auth/adapters";
 
@@ -150,3 +152,42 @@ export const images = createTable(
     nameIndex: index("image_name_idx").on(example.name),
   })
 );
+
+export const assessments = createTable(
+  "assessment",
+  {
+    id: serial("id").primaryKey(),
+    title: varchar("title", { length: 255 }).notNull(),
+    description: text("description"),
+    questions: jsonb("questions").notNull(), //edited
+    createdAt: timestamp("created_at", { withTimezone: true })
+      .default(sql`CURRENT_TIMESTAMP`)
+      .notNull(),
+  }
+);
+
+export const userResponses = createTable(
+  "user_response",
+  {
+    id: serial("id").primaryKey(),
+    userId: varchar("user_id", { length: 255 })
+      .notNull()
+      .references(() => users.id),
+    assessmentId: integer("assessment_id")
+      .notNull()
+      .references(() => assessments.id),
+    answers: json("answers").notNull(),
+    createdAt: timestamp("created_at", { withTimezone: true })
+      .default(sql`CURRENT_TIMESTAMP`)
+      .notNull(),
+  }
+);
+
+export const assessmentsRelations = relations(assessments, ({ many }) => ({
+  userResponses: many(userResponses),
+}));
+
+export const userResponsesRelations = relations(userResponses, ({ one }) => ({
+  user: one(users, { fields: [userResponses.userId], references: [users.id] }),
+  assessment: one(assessments, { fields: [userResponses.assessmentId], references: [assessments.id] }),
+}));
