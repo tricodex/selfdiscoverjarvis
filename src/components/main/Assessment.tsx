@@ -190,8 +190,30 @@ const AssessmentPage: React.FC = () => {
             </TabsList>
             <TabsContent value="assessment">
               <div className="mb-4">
-                <Label className="text-sm text-gray-600">Progress</Label>
-                <Progress value={progress} className="mt-2" />
+                
+                <Input
+  id="topic"
+  value={topic}
+  onChange={(e) => setTopic(e.target.value)}
+  placeholder="Enter new assessment topic..."
+  className="bg-gray-700 text-white"
+/>
+<Input
+  id="numberOfQuestions"
+  type="number"
+  value={numberOfQuestions}
+  onChange={(e) => setNumberOfQuestions(parseInt(e.target.value, 10))}
+  min={1}
+  max={20}
+  className="bg-gray-700 text-white"
+/>
+
+                <Button onClick={handleGenerateAssessment} className="mt-0 bg-turquoise-500 hover:bg-turquoise-600 w-full">
+  Start New Assessment
+</Button>
+<Label className="text-sm text-gray-600">Progress</Label>
+                <Progress value={progress} className="mt-2 mb-2" />
+
               </div>
               <ScrollArea className="h-[400px] rounded-md border border-gray-200 p-4">
                 <AnimatePresence>

@@ -16,9 +16,12 @@ async function TopNav() {
         </Link>
         <div className="topnav-links">
           <Link href="/" className="topnav-link">Home</Link>
+          <Link href="/about" className="topnav-link">About</Link>
           <Link href="/assessment" className="topnav-link">Assessment</Link>
           <Link href="/playground" className="topnav-link">Playground</Link>
           <Link href="/vibes" className="topnav-link">Vibes</Link>
+          <Link href="/meditation" className="topnav-link">Meditation</Link>
+          <Link href="/present" className="topnav-link">Present</Link>
         </div>
       </div>
       <div className="topnav-auth">

@@ -1,8 +1,7 @@
-// src/components/Hero.tsx
+// src/components/Meditation.tsx
 'use client';
 import React, { useRef, useEffect, useState } from 'react';
 import Image from 'next/image';
-import Link from 'next/link';
 
 const LOOP = 12;
 const PI = Math.PI;
@@ -61,8 +60,9 @@ class Wave {
   }
 }
 
-const Hero: React.FC = () => {
+const Meditation: React.FC = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const videoSectionRef = useRef<HTMLDivElement>(null);
   const [breeze, setBreeze] = useState(0);
   const [breathe, setBreathe] = useState(0);
   const [scrollY, setScrollY] = useState(0);
@@ -133,41 +133,44 @@ const Hero: React.FC = () => {
     };
   }, [breeze]);
 
+  const scrollToVideos = () => {
+    if (videoSectionRef.current) {
+      videoSectionRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <div className="hero-container">
       <div className={`hero-animation-container ${breathe ? 'hero-breathe-in' : 'hero-breathe-out'}`} 
            style={{ transform: `translate(${breeze * 5}px, ${breeze * 5}px)` }}>
-        <h1>DISCOVER</h1>
+        <h1>MEDITATION JOURNEY</h1>
         <div className="hero-canvas-wrapper">
           <canvas ref={canvasRef} />
         </div>
-        <Link href="/assessment" className="hero-button">Start Your Journey</Link>
+        <button className="hero-button" onClick={scrollToVideos}>Show Videos</button>
       </div>
       <p className="hero-haiku">
-        Gentle breath, soft mind<br />
-        Waves of thought ebb and flow, then<br />
-        Stillness embraces
+        Peaceful waves arise,<br />
+        Calmly drift to shores within,<br />
+        Finding stillness, whole.
       </p>
-      <div className="hero-cards-container" style={{ transform: `translateY(${scrollY * 0.5}px)` }}>
+      <div className="hero-cards-container" ref={videoSectionRef} style={{ transform: `translateY(${scrollY * 0.5}px)` }}>
       
-      <div className="hero-card mb-7">
-  <h2>Personalized Self-Discovery</h2>
-  <Image className="border" src="https://utfs.io/f/skkJdUt435JOPc03y252nsWMbFcTwEvJHuUD3dXN86e9iVt4" alt="tent" width={500} height={200} />
+        <div className="hero-card mb-7">
+          <h2>Guided Meditation | Self-Love & Confidence</h2>
+          <iframe width="500" height="280" src="https://www.youtube.com/embed/DtipEUV2gHM" title="Self-Love & Confidence"></iframe>
+          <p>Experience a journey of self-love and confidence with this meditation. Embrace inner strength and radiate assurance through calming visualization and affirmations.</p>
+        </div>
 
-  <p><strong>Embark on a tailored journey</strong> with AI-powered assessments that adapt in real-time, offering <em>deep insights</em> into your personality and potential.</p>
-
-</div>
-
-<div className="hero-card mb-7">
-  <h2>AI-Powered Support and Growth</h2>
-  <Image className="border" src="https://utfs.io/f/skkJdUt435JOxu54VAOZ76TgkDAu2eq8hXWBbE3op9FNVJdc" alt="wheat" width={500} height={200} />
-
-  <p>Engage in <strong>interactive dialogues</strong> with an AI chatbot, receiving <strong>real-time emotional support</strong> and guidance. Experience a visually stimulating environment with <strong>dynamic AI-generated visuals</strong> that respond to your mood.</p>
-</div>
+        <div className="hero-card mb-7">
+          <h2>Guided Meditation | Calm Your ADHD Mind</h2>
+          <iframe width="500" height="280" src="https://www.youtube.com/embed/cQwvQx-JFoM" title="Calm Your ADHD Mind"></iframe>
+          <p>Meditation tailored for ADHD. Improve focus, reduce stress, and enhance emotional well-being through this mindfulness practice designed to manage ADHD symptoms.</p>
+        </div>
 
       </div>
     </div>
   );
 };
 
-export default Hero;
+export default Meditation;
